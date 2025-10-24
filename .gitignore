@@ -1,0 +1,11 @@
+# Python
+__pycache__/
+
+# Virtual Environment
+venv_mental_health_app
+
+# Environment Variables
+.env
+
+# DB
+db.sqlite3
