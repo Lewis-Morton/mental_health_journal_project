@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -20,10 +21,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+7@8xze$%4umy#@t-^292$%b)s-3nf99dq+o@hztd@av(63@gf'
+SECRET_KEY = config('django-insecure-+7@8xze$%4umy#@t-^292$%b)s-3nf99dq+o@hztd@av(63@gf')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = config(True)
 
 ALLOWED_HOSTS = []
 
@@ -74,8 +75,12 @@ WSGI_APPLICATION = 'mental_health_journal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': config('journalapp-db,'),
+        'USER': config('journalapp_user'),
+        'PASSWORD': config('Mianyang2016'),
+        'HOST': config('localhost', default='localhost'),
+        'PORT': config('5432', default='5432')
     }
 }
 
